@@ -1,17 +1,53 @@
 import { useState } from 'react';
+import { 
+  FiShare2,
+  FiTwitter,
+  FiFacebook,
+  FiLink
+} from 'react-icons/fi';
+import { 
+  FaWhatsapp,
+  FaTelegram,
+  FaLinkedin
+} from 'react-icons/fa';
 
 export default function SocialShare({ match }) {
   const [isCopied, setIsCopied] = useState(false);
   const shareUrl = `${typeof window !== 'undefined' ? window.location.origin : ''}/matches/${match.id}`;
   const shareText = `Check out ${match.title} - ${match.status} 🏏`;
 
-  const platforms = {
-    whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`,
-    telegram: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
-    x: `https://x.com/intent/post?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`, // ✅ Updated Twitter to X
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
-    linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareText)}`
-  };
+  const platforms = [
+    {
+      name: 'whatsapp',
+      icon: <FaWhatsapp className="w-5 h-5" />,
+      url: `https://api.whatsapp.com/send?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`,
+      color: 'bg-green-500 hover:bg-green-600'
+    },
+    {
+      name: 'telegram',
+      icon: <FaTelegram className="w-5 h-5" />,
+      url: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
+      color: 'bg-blue-500 hover:bg-blue-600'
+    },
+    {
+      name: 'x',
+      icon: <FiTwitter className="w-5 h-5" />,
+      url: `https://x.com/intent/post?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`,
+      color: 'bg-black hover:bg-gray-800'
+    },
+    {
+      name: 'facebook',
+      icon: <FiFacebook className="w-5 h-5" />,
+      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+      color: 'bg-blue-600 hover:bg-blue-700'
+    },
+    {
+      name: 'linkedin',
+      icon: <FaLinkedin className="w-5 h-5" />,
+      url: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareText)}`,
+      color: 'bg-blue-700 hover:bg-blue-800'
+    }
+  ];
 
   const copyToClipboard = async () => {
     try {
@@ -24,32 +60,35 @@ export default function SocialShare({ match }) {
   };
 
   return (
-    <div className="mt-8 pt-6 border-t border-gray-200">
-      <h3 className="text-sm font-medium text-gray-500 mb-3">Share Scorecard</h3>
-      <div className="flex flex-wrap gap-3">
-        {Object.entries(platforms).map(([name, url]) => (
+    <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+      <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3 flex items-center gap-2">
+        <FiShare2 className="w-4 h-4" />
+        Share Scorecard
+      </h3>
+      <div className="flex flex-wrap gap-2">
+        {platforms.map((platform) => (
           <a
-            key={name}
-            href={url}
+            key={platform.name}
+            href={platform.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`px-4 py-2 rounded-lg text-white flex items-center gap-2 transition-opacity hover:opacity-90 ${
-              name === 'whatsapp' ? 'bg-green-500' :
-              name === 'telegram' ? 'bg-blue-500' :
-              name === 'x' ? 'bg-gray-900' : // ✅ Changed Twitter (X) background color
-              name === 'facebook' ? 'bg-blue-600' :
-              'bg-blue-700' // LinkedIn
-            }`}
+            className={`p-2.5 rounded-lg text-white ${platform.color} transition-colors`}
+            aria-label={`Share on ${platform.name}`}
           >
-            <span className="capitalize">{name === 'x' ? 'X' : name}</span> {/* ✅ Display 'X' instead of 'x' */}
+            {platform.icon}
           </a>
         ))}
         
         <button
           onClick={copyToClipboard}
-          className="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
+          className="p-2.5 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          aria-label={isCopied ? 'Link copied' : 'Copy link'}
         >
-          {isCopied ? 'Copied!' : 'Copy Link'}
+          {isCopied ? (
+            <span className="text-green-500">✓</span>
+          ) : (
+            <FiLink className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+          )}
         </button>
       </div>
     </div>
