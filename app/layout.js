@@ -41,7 +41,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} bg-gradient-to-br from-gray-900 to-gray-950 min-h-screen`}>
+      <body className={`${inter.className} bg-gradient-to-br from-gray-900 to-gray-950  min-h-screen`}>
         {children}
         <Stats apiBaseUrl={process.env.NEXT_PUBLIC_API_URL} />
       </body>

@@ -128,17 +128,6 @@ export default function Home() {
         )}
       </main>
 
-      {/* Visitor Counter Footer */}
-      <footer className="bg-gray-800/50 mt-12 py-4">
-        <div className="container mx-auto px-4 text-center text-gray-400">
-          {visitCount !== null && (
-            <p className="flex items-center justify-center space-x-2">
-              <span>👀</span>
-              <span>Visitors: {visitCount}</span>
-            </p>
-          )}
-        </div>
-      </footer>
     </div>
   );
 }

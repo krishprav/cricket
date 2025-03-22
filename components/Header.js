@@ -6,7 +6,7 @@ import { BiSolidCricketBall } from 'react-icons/bi'; // Import Cricket Ball Icon
 
 export default function Header() {
   return (
-    <header className="bg-gray-900 text-gray-100 shadow-lg">
+    <header className="bg-gray-900 text-gray-100 shadow-2lg">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           
