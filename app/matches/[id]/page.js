@@ -68,7 +68,7 @@ export default function MatchDetailsPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-gray-900">
         <Header />
         <div className="container mx-auto px-4 py-10">
           <div className="flex justify-center items-center h-64">
@@ -81,7 +81,7 @@ export default function MatchDetailsPage() {
 
   if (error || !matchDetails) {
     return (
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-gray-900">
         <Header />
         <div className="container mx-auto px-4 py-10">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
@@ -99,11 +99,11 @@ export default function MatchDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       
       <div className="container mx-auto px-4 py-6">
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div className="bg-black rounded-lg shadow-md p-6 mb-6">
           <h1 className="text-2xl font-bold mb-4">{matchDetails.title}</h1>
           <ScoreCard matchDetails={matchDetails} />
           
@@ -117,7 +117,7 @@ export default function MatchDetailsPage() {
         </div>
 
         {matchDetails.innings?.map((inning, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-md p-6 mb-6">
+          <div key={index} className="bg-black rounded-lg shadow-md p-6 mb-6">
             <h2 className="text-xl font-semibold mb-4">{inning.title}</h2>
             
             <div className="space-y-6">

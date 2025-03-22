@@ -45,7 +45,7 @@ export default function PlayerDetailsPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-gray-900">
         <Header />
         <div className="container mx-auto px-4 py-10">
           <div className="flex justify-center items-center h-64">
@@ -58,7 +58,7 @@ export default function PlayerDetailsPage() {
 
   if (error || !playerDetails) {
     return (
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-gray-900">
         <Header />
         <div className="container mx-auto px-4 py-10">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
@@ -70,14 +70,14 @@ export default function PlayerDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       
       <div className="container mx-auto px-4 py-6">
         <h1 className="text-2xl font-bold mb-2">{playerDetails.name}</h1>
         {playerDetails.role && <p className="text-gray-600 mb-6">{playerDetails.role}</p>}
         
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-black rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Career Statistics</h2>
           
           {playerDetails.stats && playerDetails.stats.batting ? (
@@ -85,7 +85,7 @@ export default function PlayerDetailsPage() {
               <h3 className="text-lg font-medium mb-2">Batting Statistics</h3>
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className="bg-black">
                     <tr>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Format
@@ -101,7 +101,7 @@ export default function PlayerDetailsPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-black divide-y divide-gray-900">
                     {Object.entries(playerDetails.stats.batting).map(([format, stats]) => (
                       <tr key={format}>
                         <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
@@ -130,8 +130,8 @@ export default function PlayerDetailsPage() {
             <div className="mt-8">
               <h3 className="text-lg font-medium mb-2">Bowling Statistics</h3>
               <div className="overflow-x-auto">
-                <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                <table className="min-w-full divide-y divide-gray-900">
+                  <thead className="bg-gray-900">
                     <tr>
                       <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Format
@@ -147,7 +147,7 @@ export default function PlayerDetailsPage() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className="bg-blue-950 divide-y divide-gray-900">
                     {Object.entries(playerDetails.stats.bowling).map(([format, stats]) => (
                       <tr key={format}>
                         <td className="px-6 py-4 whitespace-nowrap font-medium text-gray-900">

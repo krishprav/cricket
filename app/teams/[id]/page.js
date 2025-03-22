@@ -45,7 +45,7 @@ export default function TeamDetailsPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-gray-900">
         <Header />
         <div className="container mx-auto px-4 py-10">
           <div className="flex justify-center items-center h-64">
@@ -58,7 +58,7 @@ export default function TeamDetailsPage() {
 
   if (error || !teamDetails) {
     return (
-      <div className="min-h-screen bg-gray-100">
+      <div className="min-h-screen bg-gray-900">
         <Header />
         <div className="container mx-auto px-4 py-10">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
@@ -70,13 +70,13 @@ export default function TeamDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-900">
       <Header />
       
       <div className="container mx-auto px-4 py-6">
         <h1 className="text-2xl font-bold mb-6">{teamDetails.name}</h1>
         
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div className="bg-black rounded-lg shadow-md p-6 mb-6">
           <h2 className="text-xl font-semibold mb-4">Players</h2>
           
           {teamDetails.players && teamDetails.players.length > 0 ? (
